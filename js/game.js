@@ -64,13 +64,13 @@ class Game{
 
                          
                      }
-                    
-                     
                  
                  }
                 
                 
-                 
+                 fill(255);
+                 text("Player1 :"+allPlayers["player1"].score,100,30);
+                 text("Player2 :"+allPlayers["player2"].score,100,60);
 
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
                     player.distance -= 10
@@ -102,25 +102,25 @@ class Game{
                      
                  }
                
-                
-
                    
                  if (player.index !== null) {
                     //fill code here, to destroy the objects.
                     
-                 for(var i=1;i<fruitGroup.length;i++){
-                    if(fruitGroup.get(i).isTouching(players)){
-                        fruitGroup.get(i).destroy();
-                       
-                        player.update();
-                    }
-                }
+                 
+                    for(var i=0;i<fruitGroup.length;i++){
+                        if(fruitGroup.get(i).isTouching(players)){
+                            fruitGroup.get(i).destroy();
+                            player.score = player.score +1;
+                            player.update();
+                        }
                  }
                
 
-    }
+                }}
 
-    end(){
-       console.log("Game Ended");
-    }
+end(){
+   
+    console.log("Game Ended");
+   
+}
 }
