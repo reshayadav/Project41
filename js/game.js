@@ -69,8 +69,8 @@ class Game{
                 
                 
                  fill(255);
-                 text("Player1 :"+allPlayers["player1"].score,100,30);
-                 text("Player2 :"+allPlayers["player2"].score,100,60);
+                 text("Player1 :"+allPlayers.player1.score,100,30);
+                 text("Player2 :"+allPlayers.player2.score,100,60);
 
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
                     player.distance -= 10
