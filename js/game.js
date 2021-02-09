@@ -41,10 +41,14 @@ class Game{
 
                 Player.getPlayerInfo();
                  image(back_img, 0, 0, 1000, 800);
-                 var x =100;
-                 var y=200;
-                 var index =0;
+               
                   drawSprites();
+                  var x =100;
+                  var y=200;
+                  var index =0;
+
+                //   var player1;
+                //   var player2;
                  for(var plr in allPlayers){
                     
                    console.log(allPlayers); 
@@ -64,13 +68,17 @@ class Game{
 
                          
                      }
+                    
+                     fill(0);
+                     text("Player1 :"+allPlayers.player1.score,100,30);
+                     text("Player2 :"+allPlayers.player2.score,100,60);
+    
                  
                  }
                 
                 
-                 fill(255);
-                 text("Player1 :"+allPlayers.player1.score,100,30);
-                 text("Player2 :"+allPlayers.player2.score,100,60);
+                
+                 
 
                 if (keyIsDown(RIGHT_ARROW) && player.index !== null) {
                     player.distance -= 10
@@ -102,25 +110,37 @@ class Game{
                      
                  }
                
+                
+
                    
                  if (player.index !== null) {
                     //fill code here, to destroy the objects.
                     
-                 
-                    for(var i=0;i<fruitGroup.length;i++){
-                        if(fruitGroup.get(i).isTouching(players)){
-                            fruitGroup.get(i).destroy();
-                            player.score = player.score +1;
-                            player.update();
-                        }
+                 for(var i=1;i<fruitGroup.length;i++){
+                    if(fruitGroup.get(i).isTouching(players)){
+                        fruitGroup.get(i).destroy();
+                       
+                        player.update();
+                    }
+                }
                  }
                
 
-                }}
+    }
 
+    
 end(){
-   
     console.log("Game Ended");
-   
-}
+    form.hide();
+    Player.getPlayerInfo();
+    textSize(35);
+    fill("red");
+    if(allPlayers){
+    if(allPlayers.player1.score > allPlayers.player2.score)
+     text(allPlayers.player1.name + " wins", 400,200);
+     else
+         text(allPlayers.player2.name + " wins", 400,200);
+    }
+ }
+
 }
