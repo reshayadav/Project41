@@ -47,8 +47,7 @@ class Game{
                   var y=200;
                   var index =0;
 
-                //   var player1;
-                //   var player2;
+               
                  for(var plr in allPlayers){
                     
                    console.log(allPlayers); 
@@ -69,7 +68,7 @@ class Game{
                          
                      }
                     
-                     fill(0);
+                     fill(255);
                      text("Player1 :"+allPlayers.player1.score,100,30);
                      text("Player2 :"+allPlayers.player2.score,100,60);
     
@@ -116,31 +115,31 @@ class Game{
                  if (player.index !== null) {
                     //fill code here, to destroy the objects.
                     
-                 for(var i=1;i<fruitGroup.length;i++){
+                 for(var i=0;i<fruitGroup.length;i++){
                     if(fruitGroup.get(i).isTouching(players)){
                         fruitGroup.get(i).destroy();
-                       
+                        player.score = player.score + 1;
                         player.update();
                     }
-                }
+}
                  }
                
 
     }
 
     
-end(){
-    console.log("Game Ended");
-    form.hide();
-    Player.getPlayerInfo();
-    textSize(35);
-    fill("red");
-    if(allPlayers){
-    if(allPlayers.player1.score > allPlayers.player2.score)
-     text(allPlayers.player1.name + " wins", 400,200);
-     else
-         text(allPlayers.player2.name + " wins", 400,200);
-    }
- }
 
+    end(){
+        console.log("Game Ended");
+        form.hide();
+        Player.getPlayerInfo();
+        textSize(35);
+        fill("red");
+        if(allPlayers){
+        if(allPlayers.player1.score > allPlayers.player2.score)
+         text(allPlayers.player1.name + " wins", 400,200);
+         else
+             text(allPlayers.player2.name + " wins", 400,200);
+        }
+     }
 }
